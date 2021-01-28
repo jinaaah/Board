@@ -1,9 +1,11 @@
 package com.board.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.board.domain.BoardDTO;
 import com.board.mapper.BoardMapper;
@@ -15,7 +17,7 @@ public class BoardServiceImpl implements BoardService{
 	private BoardMapper boardMapper;
 
 	@Override
-	public boolean registerBoard(BoardDTO params) {
+	public boolean registerBoard(BoardDTO params) { //등록,수정
 		
 		int queryResult = 0;
 
@@ -30,24 +32,36 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public BoardDTO getBoard(long idx) {
+	public BoardDTO getBoardDetail(long idx) { //상세화면 조회
+		
 		
 		return boardMapper.selectBoardDetail(idx);
 	}
 
 	@Override
-	public boolean deleteBoard(long idx) {
+	public boolean deleteBoard(long idx) { //삭제
+		
+		
+		
+		
+		
 		
 		
 		return false;
 	}
 
 	@Override
-	public List<BoardDTO> getBoardList() {
+	public List<BoardDTO> getBoardList() { //리스트 조회
 		
+		List<BoardDTO> boardList = Collections.emptyList();
 		
+		int boardTotalCount = boardMapper.selectBoardTotalCount();
 		
-		return null;
+		if(boardTotalCount > 0) {
+			boardList = boardMapper.selectBoardList();
+		}
+		
+		return boardList;
 	}
 	
 

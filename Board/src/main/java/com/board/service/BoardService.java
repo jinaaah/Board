@@ -6,13 +6,16 @@ import com.board.domain.BoardDTO;
 
 public interface BoardService {
 	
-	//등록, 조회, 삭제, 리스트조회
+	//등록
 	public boolean registerBoard(BoardDTO params);
 	
-	public BoardDTO getBoard(long idx);
+	//상세조회
+	public BoardDTO getBoardDetail(long idx);
 	
+	//삭제
 	public boolean deleteBoard(long idx);
 	
+	//리스트 조회
 	public List<BoardDTO> getBoardList();
 	
 
