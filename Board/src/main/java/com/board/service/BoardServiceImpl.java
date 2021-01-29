@@ -41,13 +41,16 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public boolean deleteBoard(long idx) { //삭제
 		
+		int deleteResult = 0;
 		
+		BoardDTO board = boardMapper.selectBoardDetail(idx);
+
+		if(board != null && "N".equals(board.getDeleteYn())) {
+
+			deleteResult = boardMapper.deleteBoard(idx);
+		}
 		
-		
-		
-		
-		
-		return false;
+		return (deleteResult == 1) ? true : false;
 	}
 
 	@Override

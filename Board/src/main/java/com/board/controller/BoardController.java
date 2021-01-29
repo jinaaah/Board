@@ -77,6 +77,25 @@ public class BoardController {
 		return "board/list";
 		
 	}
+	
+	@GetMapping(value = "/board/view.do")
+	public String boardDetail(@RequestParam(value = "idx", required = false) Long idx, Model model) {
+		
+		BoardDTO board = boardService.getBoardDetail(idx);
+		model.addAttribute("board", board);
+		
+		return "board/view";
+	}
+	
+	
+	@GetMapping(value = "/board/delete.do")
+	public String boardDelete(@RequestParam(value = "idx", required = false) Long idx, Model model) {
+		
+		boolean board = boardService.deleteBoard(idx);
+		model.addAttribute("board", board);
+		
+		return "board/list";
+	}
 
 
 
