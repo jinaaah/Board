@@ -45,6 +45,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		BoardDTO board = boardMapper.selectBoardDetail(idx);
 
+		//조회된 글이 null이 아니고, 삭제된 상태가 아닐 때 실행
 		if(board != null && "N".equals(board.getDeleteYn())) {
 
 			deleteResult = boardMapper.deleteBoard(idx);

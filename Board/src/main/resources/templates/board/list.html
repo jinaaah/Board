@@ -34,7 +34,7 @@
 							<a th:href="@{/board/view.do( idx=${row.idx} )}" th:text="${row.title}"></a>
 						</td>
 						<td th:text="${row.writer}"></td>
-						<td th:text="${#temporals.format( row.insertTime, 'yyyy-MM-dd' )}"></td>
+						<td th:text ="${#temporals.format( row.insertTime, 'yyyy-MM-dd' )}"></td>
 						<td th:text="${row.viewCnt}"></td>
 					</tr>
 					<tr th:unless="${not #lists.isEmpty( boardList )}">
@@ -47,6 +47,7 @@
 				<a th:href="@{/board/write.do}" class="btn btn-primary waves-effect waves-light">Write</a>
 			</div>
 
+			<!-- 페이징 처리 -->
 			<th:block layout:fragment="paging">
 				<nav aria-label="Page navigation" class="text-center">
 					<ul class="pagination">
@@ -70,5 +71,6 @@
 			</th:block>
 		</div>
 	</th:block>
+	
 	
 </html>
